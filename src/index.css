@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Tokens mirror the Figma variables used across the Flexfolio frame. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #1e0d01;
+  --color-brand: #f97518;
+  --color-brand-deep: #e65f00;
+  --color-star: #eba100;
+  --color-canvas: #f5f5f5; /* colors/background/bg-primary_hover */
+  --color-surface: #fafafa; /* colors/background/bg-primary */
+  --color-feature-blue: #e2e8f3;
+  --color-feature-violet: #e6e2f3;
+  --color-muted: #888888;
+
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 24px;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-ping-soft: ping-soft 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-word-in: word-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -6px; }
+  }
+  @keyframes ping-soft {
+    75%, 100% { transform: scale(2); opacity: 0; }
+  }
+  @keyframes word-in {
+    from { opacity: 0; filter: blur(10px); transform: translateY(12px); }
+    to { opacity: 1; filter: blur(0); transform: none; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
